@@ -1,0 +1,16 @@
+name: Code review
+on:
+  workflow_dispatch:
+  pull_request:
+  pull_request_review:
+
+jobs:
+  code-review:
+    runs-on: ubuntu-latest
+    name: Code review
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - uses: mampiononavoahary/learn-code-review@main
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}

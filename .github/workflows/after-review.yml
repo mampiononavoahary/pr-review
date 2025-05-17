@@ -1,0 +1,18 @@
+name: Rerun checks after review
+on:
+  pull_request_review:
+    types:
+      - submitted
+      - dismissed
+jobs:
+  rerun-checks:
+    name: Rerun specified checks
+    permissions:
+      actions: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Rerun checks
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          check-names: "Code review"
